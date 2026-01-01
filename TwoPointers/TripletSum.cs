@@ -34,8 +34,8 @@ namespace CodingInterviewPatterns.TwoPointers
 
         public List<int[]> SolveOptimized(int[] nums, int target)
         {
+            var triplets = new List<int[]>();
             Array.Sort(nums);
-            List<int[]> seen = new List<int[]>();
             for (int i = 0; i < nums.Length; i++)
             {
                 if (nums[i] > 0)
@@ -46,16 +46,15 @@ namespace CodingInterviewPatterns.TwoPointers
                 {
                     continue;
                 }
-                var triplets = TwoPointerTechniqueForTriplet(nums, -nums[i], i);
-                seen.AddRange(triplets);
+                triplets.AddRange(TwoPointerTechniqueForTriplet(nums, -nums[i], i));
             }
-            return seen;
+            return triplets;
         }
 
         //Note : here fixedIndex is the index of the current element being considered as the first element of the triplet.
-        public static List<int[]> TwoPointerTechniqueForTriplet(int[] nums, int target, int fixedIndex)
+        public static HashSet<int[]> TwoPointerTechniqueForTriplet(int[] nums, int target, int fixedIndex)
         {
-            List<int[]> seen = new List<int[]>();
+            HashSet<int[]> seen = new HashSet<int[]>();
             int left = fixedIndex + 1;
             int right = nums.Length - 1;
             while (left < right)

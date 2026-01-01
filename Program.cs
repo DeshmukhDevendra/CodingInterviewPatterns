@@ -58,9 +58,10 @@ public class Program
 
         if (result.Count > 0)
         {
+            Console.Write("Triplets: ");
             foreach (var triplet in result)
             {
-                Console.WriteLine($"Triplet : {triplet}");
+                Console.WriteLine($" [{triplet[0]}, {triplet[1]}, {triplet[2]}]");
             }
         }
         else
